@@ -1,6 +1,6 @@
 <template>
   <div id="slide">
-    <div id="myChart" :style="{width: '100%', height: '600px'}"></div>
+    <div id="myChart" :style="{width: '100%', height: '540px'}"></div>
   </div>
 </template>
 

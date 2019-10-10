@@ -1,6 +1,6 @@
 <template>
   <div id="map">
-    <div id="myChart" :style="{width: '100%', height: '600px'}"></div>
+    <div id="myChart" :style="{width: '100%', height: '560px'}"></div>
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
       }
 
       var data = [];
-      var now = +new Date(2016, 7, 3);
+      var now = +new Date(2012, 7, 3);
       var oneDay = 24 * 3600 * 1000;
       var value = Math.random() * 1000;
       for (var i = 0; i < 1000; i++) {
