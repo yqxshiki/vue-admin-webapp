@@ -7,7 +7,4 @@
 本项目涉及的技术栈有[vue](https://cn.vuejs.org/)
 [vue-cli](https://cli.vuejs.org/zh/guide/) [vue-Router](https://router.vuejs.org/zh/) [axios](http://www.axios-js.com/)  [Echarts](https://www.echartsjs.com/zh/index.html) [element-ui](http://element-ui.cn/#/zh-CN) [fastmock](https://www.fastmock.site/) [webpack](https://www.webpackjs.com/)
 
-
-### 目前还在开发中******************请耐心等待
-
-![哈哈]("/src/assets/pkq.jpeg)
+### 目前还在开发中******************请耐心等待 
