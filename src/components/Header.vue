@@ -1,17 +1,23 @@
 <template>
-  <div class="header">
+  <div id="header">
     <div class="wrap">
-      <div class="left">
+      <div id="title-sidebar">
         <a class="image">
           <img src="../assets/github.png" alt />
           Vue project
         </a>
       </div>
       <div class="right">
-        <div class="shouye">首页</div>
+        <div class="shouye">
+          <li id="domshouye">首页</li>
+        </div>
         <div class="loginin">
-          <i class="el-icon-message-solid"></i>
-          <i class="el-icon-full-screen" @click="screen"></i>
+          <li id="domMessage">
+            <i class="el-icon-message-solid"></i>
+          </li>
+          <li id="domFullScreen">
+            <i class="el-icon-full-screen" @click="screen"></i>
+          </li>
           <div class="geren">
             <div class="admin">
               admin
@@ -67,7 +73,7 @@ export default {
 };
 </script>
 <style scoped>
-.header {
+#header {
   width: 100%;
   height: 50px;
   background: #fff;
@@ -79,7 +85,7 @@ export default {
   justify-content: space-between;
   height: 100%;
 }
-.left {
+#title-sidebar {
   width: 200px;
   background: rgb(95, 100, 119);
 }
@@ -87,7 +93,9 @@ export default {
   width: calc(100% - 200px);
   background: #fff;
 }
-
+li{
+  list-style: none;
+}
 /* left */
 .image {
   color: #fff;
@@ -110,6 +118,7 @@ export default {
   float: left;
   line-height: 50px;
   text-align: center;
+    margin-left: 200px;
 }
 .loginin {
   float: right;

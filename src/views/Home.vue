@@ -4,7 +4,7 @@
       <el-col :span="6">
         <div class="wrap">
           <div class="grid-content bg-purple">
-            <ICountUp :endVal="endVal" :options="options" @ready="onReady" />
+            <ICountUp :endVal="endVal" :duration="5000" @ready="onReady" />
             <div class="text">Total Visitors</div>
           </div>
           <i class="el-icon-s-custom"></i>
@@ -14,7 +14,7 @@
       <el-col :span="6">
         <div class="wrap">
           <div class="grid-content bg-purple">
-            <ICountUp :endVal="endVal1" :options="options" @ready="onReady" />
+            <ICountUp :endVal="endVal1" :duration="3000" @ready="onReady" />
             <div class="text">Messages</div>
           </div>
           <i class="el-icon-chat-dot-square"></i>
@@ -24,7 +24,7 @@
       <el-col :span="6">
         <div class="wrap">
           <div class="grid-content bg-purple">
-            <ICountUp :endVal="endVal2" :options="options" @ready="onReady" />
+            <ICountUp :endVal="endVal2" :duration="2000" @ready="onReady" />
             <div class="text">Total Order Placeed</div>
           </div>
           <i class="el-icon-shopping-cart-2"></i>
@@ -34,15 +34,13 @@
       <el-col :span="6">
         <div class="wrap">
           <div class="grid-content bg-purple">
-            <ICountUp :endVal="endVal3" :options="options" @ready="onReady" />
+            <ICountUp :endVal="endVal3" :duration="6000" @ready="onReady" />
             <div class="text">Total Profit</div>
           </div>
           <i class="el-icon-wallet"></i>
         </div>
       </el-col>
     </el-row>
-
-
 
     <!-- Echarts -->
     <div class="linecharts">
@@ -54,8 +52,6 @@
     <div class="bar">
       <bar />
     </div>
-
-    
   </div>
 </template>
 
@@ -77,15 +73,7 @@ export default {
       endVal: 67810,
       endVal1: 330,
       endVal2: 492,
-      endVal3: 85000,
-      options: {
-        useEasing: true,
-        useGrouping: true,
-        separator: ",",
-        decimal: ".",
-        prefix: "",
-        suffix: ""
-      }
+      endVal3: 85045
     };
   },
   methods: {
@@ -145,6 +133,8 @@ export default {
   align-items: center;
   margin: 10px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+  font-size: 2rem;
+  font-weight: bolder;
 }
 .iCountUp .text {
   font-size: 14px;

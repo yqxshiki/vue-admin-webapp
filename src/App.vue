@@ -1,9 +1,8 @@
 <template>
   <div id="app">
+    <!-- <login /> -->
     <appheader />
     <Sidebar />
-    <!-- <router-link to="/switchecharts">charts</router-link> -->
-    <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -15,7 +14,7 @@ import Header from "./components/Header";
 export default {
   components: {
     // login,
-    Sidebar: Sidebar,
+    Sidebar,
     appheader: Header
   }
 };

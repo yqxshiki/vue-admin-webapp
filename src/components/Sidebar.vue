@@ -1,6 +1,6 @@
 <template>
-  <div class="sidebar">
-    <el-container style="border: 1px solid #eee">
+  <div id="sidebar">
+    <el-container style="border: 1px solid #eee,width:200px;">
       <el-aside width="200px">
         <el-menu :default-openeds="['1', '1']">
           <router-link to="/home">
@@ -12,28 +12,39 @@
             </el-submenu>
           </router-link>
 
-          <el-submenu index="2">
-            <template slot="title">
-              <i class="el-icon-s-flag"></i>引导指南
-            </template>
-          </el-submenu>
+          <router-link to="/driver">
+            <el-submenu index="2">
+              <template slot="title">
+                <i class="el-icon-s-flag"></i>引导指南
+              </template>
+            </el-submenu>
+          </router-link>
 
-          <el-submenu index="3">
-            <template slot="title">
-              <i class="el-icon-lock"></i>权限许可
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="3-1">
-                <i class="el-icon-user"></i>用户页面
-              </el-menu-item>
-              <el-menu-item index="3-2">
-                <i class="el-icon-user-solid"></i>管理员页面
-              </el-menu-item>
-              <el-menu-item index="3-3">
-                <i class="el-icon-s-tools"></i>权限设置
-              </el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
+          <div id="titledirver">
+            <el-submenu index="3">
+              <template slot="title">
+                <i class="el-icon-lock"></i>权限许可
+              </template>
+              <el-menu-item-group>
+                <router-link to="/user">
+                  <el-menu-item index="3-1">
+                    <i class="el-icon-user"></i>用户页面
+                  </el-menu-item>
+                </router-link>
+
+                <router-link to="/administrators">
+                  <el-menu-item index="3-2">
+                    <i class="el-icon-user-solid"></i>管理员页面
+                  </el-menu-item>
+                </router-link>
+                <router-link to="/setting">
+                  <el-menu-item index="3-3">
+                    <i class="el-icon-s-tools"></i>权限设置
+                  </el-menu-item>
+                </router-link>
+              </el-menu-item-group>
+            </el-submenu>
+          </div>
 
           <el-submenu index="4">
             <template slot="title">
@@ -130,12 +141,17 @@
               <i class="el-icon-setting"></i>导航菜单测试
             </template>
             <el-menu-item-group>
-              <el-menu-item index="3-1">
-                <i class="el-icon-coffee"></i>菜单1
-              </el-menu-item>
-              <el-menu-item index="3-2">
-                <i class="el-icon-cherry"></i>菜单2
-              </el-menu-item>
+              <router-link to="/nav1">
+                <el-menu-item index="3-1">
+                  <i class="el-icon-coffee"></i>菜单1
+                </el-menu-item>
+              </router-link>
+
+              <router-link to="/nav2">
+                <el-menu-item index="3-2">
+                  <i class="el-icon-cherry"></i>菜单2
+                </el-menu-item>
+              </router-link>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -160,11 +176,10 @@ export default {
 .el-container {
   box-sizing: border-box;
 }
-.sidebar {
+#sidebar {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  color: #fff;
   margin-top: -1px;
   margin-left: -1px;
   box-sizing: border-box;
@@ -194,6 +209,7 @@ export default {
 }
 .el-aside {
   color: #fff;
+  margin-top: 50px;
 }
 .el-menu {
   height: 100%;
