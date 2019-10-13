@@ -25,7 +25,7 @@ export default {
     getuser() {
       this.axios
         .get(
-          "https://www.fastmock.site/mock/7ff7ba8b60619bef6fd647ceec01169a/admin/Administrators"
+          "/api/Administrators"
         )
         .then(res => {
           // console.log(res.data.data);

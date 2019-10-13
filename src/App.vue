@@ -40,5 +40,12 @@ a {
   color: #303133;
   text-decoration: none;
 }
+.title {
+  color: #303133;
+  width: 100%;
+  font-size: 1rem;
+  border-bottom: 1px solid #c3c6cf;
+  padding: 20px 20px;
+}
 </style>
 

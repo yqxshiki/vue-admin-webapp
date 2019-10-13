@@ -131,15 +131,6 @@ export default {
 </script>
 
 <style scoped>
-/* 头部 */
-.title {
-  color: #303133;
-  width: 100%;
-  font-size: 12px;
-  border-bottom: 1px solid #c3c6cf;
-  padding: 20px 20px;
-}
-
 .search {
   margin-top: 2rem;
   display: flex;

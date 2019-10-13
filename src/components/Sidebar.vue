@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar">
     <el-container style="border: 1px solid #eee,width:200px;">
-      <el-aside width="200px">
+      <el-aside width="200px" id="elaside">
         <el-menu :default-openeds="['1', '1']">
           <router-link to="/home">
             <el-submenu index="1">
@@ -112,9 +112,12 @@
               <i class="el-icon-tickets"></i>Excel
             </template>
             <el-menu-item-group>
-              <el-menu-item index="7-1">Excel导出</el-menu-item>
-              <el-menu-item index="7-2">Excel导入</el-menu-item>
-              <el-menu-item index="7-3">多级表头导出</el-menu-item>
+              <router-link to="/exportexcel">
+                <el-menu-item index="7-1">Excel导出</el-menu-item>
+              </router-link>
+              <router-link to="/importexcel">
+                <el-menu-item index="7-2">Excel导入</el-menu-item>
+              </router-link>
             </el-menu-item-group>
           </el-submenu>
 
@@ -209,7 +212,7 @@ export default {
 }
 .el-aside {
   color: #fff;
-  margin-top: 50px;
+  margin-left: 2px;
 }
 .el-menu {
   height: 100%;

@@ -20,14 +20,34 @@
     <div class="title">
       <span>带分页表格</span>
     </div>
-    <el-table :data="pagingtable" border style="width: 100%">
+    <el-table
+      :data="pagingtable.slice((currentPage - 1) * pagesize, currentPage * pagesize)"
+      border
+      style="width: 100%"
+    >
       <el-table-column prop="order" label="序号"></el-table-column>
-      <el-table-column prop="id" label="ID"></el-table-column>
-      <el-table-column prop="product" label="产品名称"></el-table-column>
+      <el-table-column prop="gid" label="ID"></el-table-column>
+      <el-table-column prop="name" label="产品名称"></el-table-column>
       <el-table-column prop="price" label="价格"></el-table-column>
       <el-table-column prop="number" label="数量"></el-table-column>
-      <!-- <el-tag closable :type="tag.type"></el-tag> -->
+      <el-table-column width="120" prop="tag" label="状态">
+        <template slot-scope="scope">
+          <el-tag
+            :type="scope.row.tag =='已取消' ? 'danger':'success' "
+            disable-transitions
+          >{{scope.row.tag}}</el-tag>
+        </template>
+      </el-table-column>
     </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage"
+      :page-sizes="[5, 10, 15, 20]"
+      :page-size="pagesize"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="pagingtable.length"
+    ></el-pagination>
   </div>
 </template>
 
@@ -42,33 +62,28 @@ export default {
     };
     return {
       tableData: Array(6).fill(item),
-      pagingtable: [{ order: order, price: price }]
+      pagingtable: [],
+      pagesize: 5,
+      currentPage: 1
     };
   },
   methods: {
+    // 每页展示多少条数据
+    handleSizeChange(size) {
+      this.pagesize = size;
+    },
+    // 第几页
+    handleCurrentChange(currentPage) {
+      this.currentPage = currentPage;
+    },
+    // 获取数据
     getorder() {
       this.axios
-        .get(
-          "https://www.fastmock.site/mock/7ff7ba8b60619bef6fd647ceec01169a/admin/order"
-        )
+        .get("/api/order")
         .then(res => {
           // console.log(res);
-          this.pagingtable.order = res.data.data;
-          console.log(this.pagingtable);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-    getprice() {
-      this.axios
-        .get(
-          "https://www.fastmock.site/mock/7ff7ba8b60619bef6fd647ceec01169a/admin/price"
-        )
-        .then(res => {
-          // console.log(res);
-          this.pagingtable.price = res.data.data;
-          console.log(this.pagingtable);
+          this.pagingtable = res.data.data.table;
+          console.log(this.pagingtable.length);
         })
         .catch(err => {
           console.log(err);
@@ -78,7 +93,6 @@ export default {
   // 页面渲染前拿到数据
   mounted() {
     this.getorder();
-    this.getprice();
   }
 };
 </script>
@@ -95,12 +109,9 @@ td {
   width: 100%;
   height: 50px;
 }
-.title {
-  color: #303133;
-  width: 100%;
-  font-size: 12px;
-  border-bottom: 1px solid #ebeef5;
-  padding: 20px 20px;
+div {
+  font-size: 1.1rem;
+  font-weight: 100;
 }
 </style>
 

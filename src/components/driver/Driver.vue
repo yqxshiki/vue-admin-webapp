@@ -30,7 +30,8 @@ export default {
       prevBtnText: "上一步",
       onReset: () => {
         document.getElementById("header").style.position = "fixed";
-        // document.getElementById("sidebar").style.position = "fixed";
+        document.getElementById("elaside").style.marginTop = "50px";
+        document.getElementById("elaside").style.marginLeft = "2px";
       }
     });
   },
@@ -61,7 +62,6 @@ export default {
   margin: 1rem;
   width: 90px;
   height: 45px;
-  /* position: relative; */
 }
 div#driver-highlighted-element-stage {
   opacity: 0.6;

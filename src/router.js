@@ -11,7 +11,8 @@ import error from './views/Error.vue'
 import home from './views/Home.vue'
 import driver from './components/driver/Driver.vue'
 
-
+// personal
+import personal from './components/Personal.vue'
 
 // Permission
 import user from './components/Permission/User.vue'
@@ -34,6 +35,11 @@ import map from './components/Echarts/Map.vue'
 import slideecharts from './components/Echarts/Slide-echarts.vue'
 import switchecharts from './components/Echarts/Switch-echarts.vue'
 // import { Table } from '_element-ui@2.12.0@element-ui'
+
+// Excel
+import importexcel from './components/Excel/Importexcel.vue'
+import exportexcel from './components/Excel/Exportexcel.vue'
+
 
 // nav
 import nav1 from './components/nav/Nva1.vue'
@@ -71,6 +77,7 @@ export default new Router({
     {
       path: "/sidebar", component: () => import('./components/Sidebar.vue')
     },
+    { path: "/personal", component: () => import('./components/Personal.vue') },
     { path: "/driver", component: () => import('./components/driver/Driver.vue') },
     //permission
     { path: "/user", component: () => import('./components/Permission/User.vue') },
@@ -90,6 +97,10 @@ export default new Router({
     { path: "/map", name: "map", component: () => import('./components/Echarts/Map.vue') },
     { path: "/slideecharts", name: "slideecharts", component: () => import('./components/Echarts/Slide-echarts.vue') },
     { path: "/switchecharts", name: "switchecharts", component: () => import('./components/Echarts/Switch-echarts.vue') },
+
+    // Excel
+    { path: "/importexcel", component: () => import('./components/Excel/Importexcel.vue') },
+    { path: "/exportexcel", component: () => import('./components/Excel/Exportexcel.vue') },
 
     // nav
     { path: "/nav1", component: () => import('./components/nav/Nva1.vue') },

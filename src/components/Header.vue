@@ -93,7 +93,7 @@ export default {
   width: calc(100% - 200px);
   background: #fff;
 }
-li{
+li {
   list-style: none;
 }
 /* left */
@@ -118,25 +118,34 @@ li{
   float: left;
   line-height: 50px;
   text-align: center;
-    margin-left: 200px;
+  margin-left: 100px;
 }
 .loginin {
   float: right;
-  width: 200px;
+  width: 260px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.loginin > i {
-  font-size: 24px;
+.loginin i {
+  font-size: 1.5rem;
   color: #9b9292;
   cursor: pointer;
+}
+.loginin li:hover {
+  background: #ccc;
+  opacity: 0.6;
 }
 .geren {
   display: flex;
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
+  margin-left: 20px;
+}
+.geren:hover {
+  background: #ccc;
+  opacity: 0.6;
 }
 .geren img {
   width: 40px;
