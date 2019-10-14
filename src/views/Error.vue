@@ -3,6 +3,9 @@
     <div class="wrap">
       <div class="no">哎哟！抱歉，找不到该页</div>
       <h3>404</h3>
+      <router-link to="/home">
+        <span class="zhuye">点击返回主页</span>
+      </router-link>
     </div>
   </div>
 </template>
@@ -28,5 +31,13 @@ h3 {
   font-weight: bold;
   font-size: 40px;
   color: rgb(199, 26, 26);
+}
+.zhuye {
+  color: red;
+  font-weight: bolder;
+}
+.zhuye:hover {
+  box-shadow: 0 2px 12px 10px black;
+  font-size: 45px;
 }
 </style>

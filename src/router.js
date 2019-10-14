@@ -58,7 +58,7 @@ const router = new Router({
     {
       path: "/display", component: display, name: "home", meta: { title: '#' }, redirect: "/home", children: [
         // 二级路由
-        { path: "/home", meta: { title: '首页2' }, component: () => import('./views/Home.vue') },
+        { path: "/home", meta: { title: '首页' }, component: () => import('./views/Home.vue') },
         { path: "/personal", meta: { title: '个人中心' }, component: () => import('./components/Personal.vue') },
         { path: "/driver", meta: { title: '引导' }, component: () => import('./components/driver/Driver.vue') },
         //permission

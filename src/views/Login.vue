@@ -18,6 +18,7 @@
 
       <el-form-item>
         <el-button type="primary" @click="sendform('ruleForm')">登录</el-button>
+        <vcode :show="isShow" @onSuccess="onSuccess" @onClose="onClose" />
       </el-form-item>
     </el-form>
   </div>
@@ -25,8 +26,12 @@
 
 
 <script>
+import vcode from "vue-puzzle-vcode";
 export default {
   nameL: "login",
+  components: {
+    vcode
+  },
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
@@ -49,6 +54,9 @@ export default {
       }
     };
     return {
+      isShow: false, // 验证码模态框是否出现
+      key: 0, //开关
+      // 表单
       ruleForm: {
         username: "",
         password: ""
@@ -79,25 +87,42 @@ export default {
     },
     // 登录发送数据
     sendform() {
-      if (this.ruleForm.username == "" || this.ruleForm.password == "") {
-        alert("请输入用户名或者密码");
-      } else {
-        let newform = {
-          username: this.ruleForm.username,
-          password: this.ruleForm.password
-        };
-        this.axios
-          .post("/api/login", newform)
-          .then(res => {
-            // console.log(res.data.data.userInfo.token);
-            const token = res.data.data.userInfo.token;
-            localStorage.setItem("loginToken", token);
-            this.$router.push("/display");
-          })
-          .catch(err => {
-            console.log(err);
-          });
+      this.onSubmit();
+      if (this.key == 1) {
+        console.log(this.key);
+        if (this.ruleForm.username == "" || this.ruleForm.password == "") {
+          alert("请输入用户名或者密码");
+        } else {
+          let newform = {
+            username: this.ruleForm.username,
+            password: this.ruleForm.password
+          };
+          this.axios
+            .post("/api/login", newform)
+            .then(res => {
+              // console.log(res.data.data.userInfo.token);
+              const token = res.data.data.userInfo.token;
+              localStorage.setItem("loginToken", token);
+              this.$router.push("/display");
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
       }
+    },
+    onSubmit() {
+      this.isShow = true;
+    },
+    // 用户通过了验证
+    onSuccess(msg) {
+      this.isShow = false; // 通过验证后，需要手动隐藏模态框
+      this.key = 1;
+      this.sendform();
+    },
+    // 用户点击遮罩层，应该关闭模态框
+    onClose() {
+      this.isShow = false;
     }
   },
   mounted() {
