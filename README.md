@@ -34,6 +34,63 @@ npm run serve
 
 出去登录页,页面主要来三个部分组成：**头部 侧边栏 展示页**,可以点击侧边栏来就行路由跳转
 
+### 登录权限验证
+
+从fastmock中接收token,登录时存储在**localStorage**,设置全局前置守卫,在进入其他页面时，有token时才能进入，不然就跳到login页面
+
+#### 全局前置守卫
+
+```javascript
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.loginToken ? true : false;
+  if (to.path == "/login") {
+    next();
+  } else {
+    isLogin ? next() : next('/login')
+  }
+})
+```
+
+#### 请求拦截
+
+```javascript
+axios.interceptors.request.use(config => {
+  // 判断是否有token
+  if (localStorage.loginToken) {
+    config.headers.Authorization = localStorage.loginToken;
+  }
+  return config;
+}, err => {
+  // 请求错误
+  return Promise.reject(err);
+})
+```
+
+#### 响应拦截
+
+```javascript
+axios.interceptors.response.use(res => {
+  return res;
+},
+  err => {
+    const { status } = err.response;
+    if (status == 401) {
+      // 后台定义401为过期
+      alert("token过期,请重新登录!")
+      // 清楚token
+      localStorage.removeItem("loginToken");
+      router.push("/login");
+    } else {
+      alert(err.response.data)
+    }
+    return Promise.reject(err);
+  });
+```
+
+### Echart多图表
+
+### Excel
+
 ### fastmock数据
 这里引用官方的介绍
 >fastmock可以让你在没有后端程序的情况下能真实地在线模拟ajax请求，你可以用fatmock实现项目初期纯前端的效果演示，也可以用fastmock实现开发中的数据模拟从而实现前后端分离。在使用fastmock之前，你的团队实现数据模拟可能是下面的方案中的一种或者多种

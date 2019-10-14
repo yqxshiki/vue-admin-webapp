@@ -12,8 +12,12 @@
         <div class="shouye">
           <li id="domshouye">
             <el-breadcrumb separator="/">
-              <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+              <el-breadcrumb-item>当前位置:</el-breadcrumb-item>
+              <el-breadcrumb-item
+                :to="{ path: items.path }"
+                v-for="(items,index) in breadList"
+                :key="index"
+              >{{items.meta.title}}</el-breadcrumb-item>
             </el-breadcrumb>
           </li>
         </div>
@@ -66,10 +70,12 @@ export default {
   data() {
     return {
       fullscreen: false,
-      key: 0
+      key: 0,
+      breadList: []
     };
   },
   methods: {
+    // 缩放面包屑
     flodpx() {
       let titlesidebar = document.getElementById("title-sidebar");
       let elaside = document.getElementById("elaside");
@@ -138,10 +144,32 @@ export default {
       // 清除token
       localStorage.removeItem("loginToken");
       this.$router.push("/login");
+    },
+    // 面包屑
+    isHome(route) {
+      return route.name === "home";
+    },
+    getBreadcrumb() {
+      let matched = this.$route.matched;
+      //如果不是首页
+      if (!this.isHome(matched[0])) {
+        matched = [{ path: "/home", meta: { title: "首页" } }].concat(matched);
+      }
+      this.breadList = matched;
+      // console.log(this.breadList);
     }
+  },
+  watch: {
+    $route() {
+      this.getBreadcrumb();
+    }
+  },
+  mounted() {
+    this.getBreadcrumb();
   }
 };
 </script>
+
 <style scoped>
 #header {
   width: 100%;
