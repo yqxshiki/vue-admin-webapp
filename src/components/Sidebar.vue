@@ -1,7 +1,7 @@
 <template>
   <div id="sidebar">
     <el-container style="border: 1px solid #eee,width:200px;">
-      <el-aside width="200px" id="elaside">
+      <el-aside id="elaside" width="200px">
         <el-menu :default-openeds="['1', '1']">
           <router-link to="/home">
             <el-submenu index="1">
@@ -161,7 +161,7 @@
       </el-aside>
     </el-container>
 
-    <div class="wrap">
+    <div class="wrap" id="sidebarwrap">
       <router-view></router-view>
     </div>
   </div>
@@ -192,7 +192,9 @@ export default {
   align-items: center;
   background: rgb(240, 243, 244);
 }
-
+#elaside {
+  transition: 1s;
+}
 /* 滚动条 */
 .el-aside::-webkit-scrollbar {
   width: 5px;
@@ -250,6 +252,7 @@ export default {
   width: calc(100% - 300px);
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   overflow-y: scroll;
+  transition: 1s;
 }
 
 .wrap::-webkit-scrollbar {

@@ -1,21 +1,22 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
+  <div id="display">
+    <appheader />
+    <sidebar />
   </div>
 </template>
 
 <script>
+import appheader from "../components/Header";
+import sidebar from "../components/Sidebar";
 export default {
-  name: "app"
-  // created() {
-  //   if (localStorage.loginToken) {
-  //     this.$store.dispatch("setUser", localStorage.loginToken);
-  //   }
-  // }
+  name: "display",
+  components: {
+    sidebar,
+    appheader
+  }
 };
 </script>
-
-<style>
+<style scoped>
 html,
 body {
   width: 100%;
@@ -27,7 +28,7 @@ body {
     Arial, sans-serif;
   background: #f0f3f4;
 }
-#app {
+#display {
   width: 100%;
   height: 100%;
 }
@@ -43,4 +44,3 @@ a {
   padding: 20px 20px;
 }
 </style>
-

@@ -7,25 +7,52 @@
           Vue project
         </a>
       </div>
-      <div class="right">
+      <div class="right" id="right-bread">
+        <i class="el-icon-s-fold" id="fold" @click="flodpx()"></i>
         <div class="shouye">
-          <li id="domshouye">首页</li>
+          <li id="domshouye">
+            <el-breadcrumb separator="/">
+              <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+              <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+            </el-breadcrumb>
+          </li>
         </div>
         <div class="loginin">
-          <li id="domMessage">
-            <i class="el-icon-message-solid"></i>
+          <li id="domMessage" @click="open">
+            <el-badge value="new" class="item">
+              <i class="el-icon-message-solid"></i>
+            </el-badge>
           </li>
+
           <li id="domFullScreen">
             <i class="el-icon-full-screen" @click="screen"></i>
           </li>
           <div class="geren">
-            <div class="admin">
-              admin
-              <i class="el-icon-arrow-down"></i>
-            </div>
-            <div>
-              <img src="../assets/personal/user01.jpg" alt />
-            </div>
+            <el-col>
+              <el-dropdown>
+                <span class="el-dropdown-link">
+                  <div class="admin">
+                    admin
+                    <i class="el-icon-arrow-down"></i>
+                  </div>
+                  <div>
+                    <img src="../assets/personal/user01.jpg" alt />
+                  </div>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <router-link to="/home">
+                    <el-dropdown-item icon="el-icon-s-home">首页</el-dropdown-item>
+                  </router-link>
+                  <router-link to="/personal">
+                    <el-dropdown-item icon="el-icon-user-solid">我的主页</el-dropdown-item>
+                  </router-link>
+
+                  <el-dropdown-item icon="el-icon-switch-button">
+                    <span @click="removetoken()">退出</span>
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </el-col>
           </div>
         </div>
       </div>
@@ -38,10 +65,47 @@ export default {
   name: "index",
   data() {
     return {
-      fullscreen: false
+      fullscreen: false,
+      key: 0
     };
   },
   methods: {
+    flodpx() {
+      let titlesidebar = document.getElementById("title-sidebar");
+      let elaside = document.getElementById("elaside");
+      let fold = document.getElementById("fold");
+      let rightbread = document.getElementById("right-bread");
+      let sidebarwrap = document.getElementById("sidebarwrap");
+
+      this.key++;
+      if (this.key == 1) {
+        titlesidebar.style.width = "50px";
+        elaside.style.width = "50px";
+        rightbread.style.width = "calc(100% - 100px)";
+        sidebarwrap.style.width = "calc(100% - 200px)";
+        fold.className = "el-icon-s-unfold";
+      }
+      if (this.key == 2) {
+        titlesidebar.style.width = "200px";
+        elaside.style.width = "200px";
+        rightbread.style.width = "calc(100% - 200px)";
+        sidebarwrap.style.width = "calc(100% - 300px)";
+        fold.className = "el-icon-s-fold";
+        this.key = 0;
+      }
+    },
+    // 信息
+    open() {
+      this.$notify({
+        title: "消息中心",
+        dangerouslyUseHTMLString: true,
+        message: `<div>优惠劵到期提醒  2019-10-12 </div>                 
+       <div>11-11大活动  2018-11-5 </div>
+       <div>充值成功  2018-10-7 </div>
+         `,
+        offset: 100
+      });
+    },
     // 点击全屏
     screen() {
       let element = document.documentElement;
@@ -68,6 +132,12 @@ export default {
         }
       }
       this.fullscreen = !this.fullscreen;
+    },
+    // 退出
+    removetoken() {
+      // 清除token
+      localStorage.removeItem("loginToken");
+      this.$router.push("/login");
     }
   }
 };
@@ -88,10 +158,15 @@ export default {
 #title-sidebar {
   width: 200px;
   background: rgb(95, 100, 119);
+  transition: 1s;
 }
 .right {
   width: calc(100% - 200px);
   background: #fff;
+  transition: 1s;
+}
+.el-breadcrumb {
+  line-height: 50px;
 }
 li {
   list-style: none;
@@ -109,45 +184,48 @@ li {
   width: 28px;
   height: 28px;
   border-radius: 50%;
+  margin-left: -2px;
   color: #fff;
   vertical-align: middle;
 }
 
 /* right */
+#fold,
 .shouye {
   float: left;
   line-height: 50px;
   text-align: center;
-  margin-left: 100px;
+  margin-left: 3rem;
 }
 .loginin {
   float: right;
-  width: 260px;
+  width: 300px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .loginin i {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #9b9292;
   cursor: pointer;
+  margin-left: 1rem;
 }
 .loginin li:hover {
   background: #ccc;
   opacity: 0.6;
 }
-.geren {
+.el-dropdown-link {
   display: flex;
   justify-content: space-around;
   align-items: center;
   cursor: pointer;
   margin-left: 20px;
 }
-.geren:hover {
+.el-dropdown-link:hover {
   background: #ccc;
   opacity: 0.6;
 }
-.geren img {
+.el-dropdown-link img {
   width: 40px;
   height: 40px;
   border-radius: 50%;

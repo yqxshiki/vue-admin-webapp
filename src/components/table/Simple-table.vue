@@ -83,7 +83,7 @@ export default {
         .then(res => {
           // console.log(res);
           this.pagingtable = res.data.data.table;
-          console.log(this.pagingtable.length);
+          // console.log(this.pagingtable.length);
         })
         .catch(err => {
           console.log(err);

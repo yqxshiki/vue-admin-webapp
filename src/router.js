@@ -5,8 +5,7 @@ import Router from 'vue-router'
 import login from './views/Login.vue'
 import sidebar from './components/Sidebar.vue'
 import header from './components/Header.vue'
-
-import charts from './views/charts.vue'
+import display from './views/Diplay.vue'
 import error from './views/Error.vue'
 import home from './views/Home.vue'
 import driver from './components/driver/Driver.vue'
@@ -46,65 +45,64 @@ import nav1 from './components/nav/Nva1.vue'
 import nav2 from './components/nav/Nav2.vue'
 
 
-// 二级路由
-// import statistics from './components/HomeEcharts/Statistics.vue'
-// import piechart from './components/HomeEcharts/Piechart.vue'
-// import yearlyexpense from './components/HomeEcharts/Yearlyexpense.vue'
-
 
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    { path: "/", redirect: '/home' },
+    { path: "/", redirect: '/login' },
     { path: "/login", component: () => import('./views/Login.vue') },
-    { path: "/charts", component: () => import('./views/charts.vue') },
+    {
+      path: "/display", component: display, redirect: "/home", children: [
+        // 二级路由
+        { path: "/home", component: () => import('./views/Home.vue') },
+        { path: "/personal", component: () => import('./components/Personal.vue') },
+        { path: "/driver", component: () => import('./components/driver/Driver.vue') },
+        //permission
+        { path: "/user", component: () => import('./components/Permission/User.vue') },
+        { path: "/setting", component: () => import('./components/Permission/Setting.vue') },
+        { path: "/administrators", component: () => import('./components/Permission/Administrators.vue') },
+
+        // Table
+        { path: "/simpletable", component: () => import('./components/table/Simple-table.vue') },
+        { path: "/complextable", component: () => import('./components/table/Complex-table.vue') },
+        //partcomponents
+        { path: "/slide", component: () => import('./components/partcomponents/Slide.vue') },
+        { path: "/uploadpic", component: () => import('./components/partcomponents/Uploadpic.vue') },
+        { path: "/carousel", component: () => import('./components/partcomponents/Carousel.vue') },
+        // Echarts
+        { path: "/map", name: "map", component: () => import('./components/Echarts/Map.vue') },
+        { path: "/slideecharts", name: "slideecharts", component: () => import('./components/Echarts/Slide-echarts.vue') },
+        { path: "/switchecharts", name: "switchecharts", component: () => import('./components/Echarts/Switch-echarts.vue') },
+        // Excel
+        { path: "/importexcel", component: () => import('./components/Excel/Importexcel.vue') },
+        { path: "/exportexcel", component: () => import('./components/Excel/Exportexcel.vue') },
+
+        // nav
+        { path: "/nav1", component: () => import('./components/nav/Nva1.vue') },
+        { path: "/nav2", component: () => import('./components/nav/Nav2.vue') }
+      ]
+    },
     { path: "/header", component: () => import('./components/Header.vue') },
     { path: "/error", component: () => import('./views/Error.vue') },
     {
-      path: "/home", component: () => import('./views/Home.vue'),
-      // children: [
-      //   { path: "/statistics", component:()=>import('')  },
-      //   { path: "/piechart", component:()=>import('')  },
-      //   { path: "/yearlyexpense", component:()=>import('')  },
-
-      // ]
-    },
-
-    {
       path: "/sidebar", component: () => import('./components/Sidebar.vue')
     },
-    { path: "/personal", component: () => import('./components/Personal.vue') },
-    { path: "/driver", component: () => import('./components/driver/Driver.vue') },
-    //permission
-    { path: "/user", component: () => import('./components/Permission/User.vue') },
-    { path: "/setting", component: () => import('./components/Permission/Setting.vue') },
-    { path: "/administrators", component: () => import('./components/Permission/Administrators.vue') },
 
-    // Table
-    { path: "/simpletable", component: () => import('./components/table/Simple-table.vue') },
-    { path: "/complextable", component: () => import('./components/table/Complex-table.vue') },
-
-    //partcomponents
-    { path: "/slide", component: () => import('./components/partcomponents/Slide.vue') },
-    { path: "/uploadpic", component: () => import('./components/partcomponents/Uploadpic.vue') },
-    { path: "/carousel", component: () => import('./components/partcomponents/Carousel.vue') },
-
-    // Echarts
-    { path: "/map", name: "map", component: () => import('./components/Echarts/Map.vue') },
-    { path: "/slideecharts", name: "slideecharts", component: () => import('./components/Echarts/Slide-echarts.vue') },
-    { path: "/switchecharts", name: "switchecharts", component: () => import('./components/Echarts/Switch-echarts.vue') },
-
-    // Excel
-    { path: "/importexcel", component: () => import('./components/Excel/Importexcel.vue') },
-    { path: "/exportexcel", component: () => import('./components/Excel/Exportexcel.vue') },
-
-    // nav
-    { path: "/nav1", component: () => import('./components/nav/Nva1.vue') },
-    { path: "/nav2", component: () => import('./components/nav/Nav2.vue') },
     { path: "*", redirect: "/error", hidden: true }
   ]
 })
+// 判断进入其他页面有没有先登录
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.loginToken ? true : false;
+  if (to.path == "/login") {
+    next();
+  } else {
+    isLogin ? next() : next('/login')
+  }
+})
+
+export default router
