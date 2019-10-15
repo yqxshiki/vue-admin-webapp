@@ -99,6 +99,8 @@ axios.interceptors.response.use(res => {
 
 ### Excel
 
+  excel在实际项目中主要是后端做的，当然前端也可以做,只是我觉得现在没有必要所以没做。想了解的可以去搜索一下就有。
+
 ### fastmock数据
 
 这里引用官方的介绍
@@ -106,7 +108,6 @@ axios.interceptors.response.use(res => {
 >>* 本地手写数据模拟，在前端代码中产生一大堆的mock代码。
 >>* 利用mockjs或者canjs的can-fixture实现ajax拦截，本地配置必要的json规则。
 >>* 后端在Controller层造假数据返回给前端。
-
+---------------
+**我的fastmock 项目端口**
 ![](https://blog-1259178461.cos.ap-chengdu.myqcloud.com/vue-admin-webapp/fastmock.png)
-
-## 目前还在开发中******************请耐心等待 

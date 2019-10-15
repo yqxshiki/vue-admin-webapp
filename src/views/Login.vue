@@ -61,6 +61,7 @@ export default {
         username: "",
         password: ""
       },
+      // 规则
       rules: {
         username: [
           { required: true, validator: validatePass, trigger: "blur" }
@@ -89,7 +90,7 @@ export default {
     sendform() {
       this.onSubmit();
       if (this.key == 1) {
-        console.log(this.key);
+        // console.log(this.key);
         if (this.ruleForm.username == "" || this.ruleForm.password == "") {
           alert("请输入用户名或者密码");
         } else {
@@ -103,6 +104,8 @@ export default {
               // console.log(res.data.data.userInfo.token);
               const token = res.data.data.userInfo.token;
               localStorage.setItem("loginToken", token);
+              this.$store.getters.change;
+              // console.log(this.$store.state.driverkey);
               this.$router.push("/display");
             })
             .catch(err => {

@@ -47,7 +47,7 @@ export default {
   margin: 1.2rem;
 }
 div {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 100;
 }
 </style>

@@ -52,7 +52,7 @@
                   </router-link>
 
                   <el-dropdown-item icon="el-icon-switch-button">
-                    <span @click="removetoken()">退出</span>
+                    <span @click="removetoken()" class="remove">退出</span>
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
@@ -257,5 +257,9 @@ li {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+.remove {
+  width: 100%;
+  height: 100%;
 }
 </style>

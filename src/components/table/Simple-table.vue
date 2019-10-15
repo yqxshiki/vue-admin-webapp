@@ -98,7 +98,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 tr,
 th,
 td {
@@ -110,7 +110,7 @@ td {
   height: 50px;
 }
 div {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 100;
 }
 </style>

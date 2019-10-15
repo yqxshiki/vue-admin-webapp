@@ -80,7 +80,12 @@ export default {
     onReady: function(instance, CountUp) {
       const that = this;
       instance.update(that.endVal + 100);
-    }
+    },
+    // isdriver() {
+    //   let key = this.$store.state.driverkey;
+    //   if (key == 1) {
+    //   }
+    // }
   }
 };
 </script>
@@ -133,11 +138,14 @@ export default {
   align-items: center;
   margin: 10px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bolder;
 }
 .iCountUp .text {
-  font-size: 14px;
+  font-size: 0.8rem;
+  color: #36a3f7;
+  text-shadow: 0 5px 10px red;
+  white-space: nowrap;
 }
 .bg-purple {
   width: 50%;

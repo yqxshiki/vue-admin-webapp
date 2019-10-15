@@ -39,7 +39,6 @@ export default {
     guide() {
       this.driver.defineSteps(steps);
       document.getElementById("header").style.position = "fixed"; //解决fixed显示空白bug
-      // document.getElementById("sidebar").style.position = "fixed"; //解决fixed显示空白bug
       this.driver.start();
     }
   }
