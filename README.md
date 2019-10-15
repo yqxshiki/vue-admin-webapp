@@ -9,6 +9,8 @@
 
 本项目github地址[vue-admin-webapp](https://github.com/yqxshiki/vue-admin-webapp)
 
+[项目运行地址](http://yqxshiki.gitee.io/yqx-vue-admin-webapp/#/login)
+
 ### 项目简介
 
 vue-admin-webapp 是一个后台管理系统,基于**vuecli** 和**element-ui**,使用fastmock来模拟数据,其中有图表,表格,权限,excel等等，你可以根据你的需求来添加路由。
