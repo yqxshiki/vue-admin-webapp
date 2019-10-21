@@ -26,7 +26,7 @@ export default {
   methods: {
     getexcel() {
       this.axios
-        .get("/api/export")
+        .get("/export")
         .then(res => {
           // console.log(res);
           this.excel = res.data.data.export;

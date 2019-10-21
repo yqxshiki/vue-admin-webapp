@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 Vue.prototype.axios = axios
+axios.defaults.baseURL = "https://www.fastmock.site/mock/7ff7ba8b60619bef6fd647ceec01169a/admin";
 //引用element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';

@@ -25,7 +25,7 @@ export default {
     getuser() {
       this.axios
         .get(
-          "/api/Administrators"
+          "/Administrators"
         )
         .then(res => {
           // console.log(res.data.data);

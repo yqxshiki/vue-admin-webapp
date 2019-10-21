@@ -81,11 +81,6 @@ export default {
       const that = this;
       instance.update(that.endVal + 100);
     },
-    // isdriver() {
-    //   let key = this.$store.state.driverkey;
-    //   if (key == 1) {
-    //   }
-    // }
   }
 };
 </script>

@@ -48,6 +48,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       :total="pagingtable.length"
     ></el-pagination>
+    <!-- total是总数据量 -->
   </div>
 </template>
 
@@ -63,8 +64,8 @@ export default {
     return {
       tableData: Array(6).fill(item),
       pagingtable: [],
-      pagesize: 5,
-      currentPage: 1
+      pagesize: 5, //页面一次展示多少数据
+      currentPage: 1 // 第几页
     };
   },
   methods: {
@@ -79,7 +80,7 @@ export default {
     // 获取数据
     getorder() {
       this.axios
-        .get("/api/order")
+        .get("/order")
         .then(res => {
           // console.log(res);
           this.pagingtable = res.data.data.table;

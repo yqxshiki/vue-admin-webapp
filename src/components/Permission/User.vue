@@ -24,7 +24,7 @@ export default {
     getuser() {
       this.axios
         .get(
-          "/api/users"
+          "/users"
         )
         .then(res => {
           // console.log(res.data.data);

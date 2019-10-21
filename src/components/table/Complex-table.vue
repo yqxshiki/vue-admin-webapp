@@ -2,6 +2,7 @@
   <div id="complex">
     <div class="title">
       <span>复杂操作表格</span>
+      <span class="red">(数据原因,没有做这方面的功能，请见谅!)</span>
     </div>
     <!-- search -->
     <div class="search">
@@ -42,13 +43,13 @@
     <!-- 表格 -->
     <div class="table">
       <el-table ref="filterTable" border :data="tableData" style="width: 100%">
-        <el-table-column width="80" prop="order" label="序号"></el-table-column>
-        <el-table-column width="120" prop="id" label="订单号"></el-table-column>
-        <el-table-column width="120" prop="date" label="下单时间"></el-table-column>
-        <el-table-column width="200" prop="address" label="配送地址"></el-table-column>
-        <el-table-column width="120" prop="phone" label="联系电话"></el-table-column>
-        <el-table-column width="80" prop="people" label="配送员"></el-table-column>
-        <el-table-column width="120" prop="tag" label="状态">
+        <el-table-column prop="order" label="序号"></el-table-column>
+        <el-table-column prop="id" label="订单号"></el-table-column>
+        <el-table-column prop="date" label="下单时间"></el-table-column>
+        <el-table-column prop="address" label="配送地址"></el-table-column>
+        <el-table-column prop="phone" label="联系电话"></el-table-column>
+        <el-table-column prop="people" label="配送员"></el-table-column>
+        <el-table-column prop="tag" label="状态">
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.tag =='已完成' ? 'success':'danger' "
@@ -57,7 +58,7 @@
           </template>
         </el-table-column>
 
-        <el-table-column prop="status" label="操作" width="374">
+        <el-table-column prop="status" label="操作" width="335">
           <el-button type="primary">编辑</el-button>
           <el-button type="warning" @click="open2">审核</el-button>
           <el-button type="success" @click="open3">完成</el-button>
@@ -131,6 +132,16 @@ export default {
 </script>
 
 <style scoped>
+#complex {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.red {
+  color: red;
+  margin-left: 2rem;
+  font-size: 0.8rem;
+}
 .search {
   margin-top: 2rem;
   display: flex;

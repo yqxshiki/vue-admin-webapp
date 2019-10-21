@@ -49,7 +49,7 @@ export default {
   methods: {
     // 获取数据
     getorderData() {
-      this.axios.get("/api/slide").then(res => {
+      this.axios.get("/slide").then(res => {
         console.log(res.data.data);
         this.orderData = res.data.data.orderData;
         this.callbackData = res.data.data.callbackData;

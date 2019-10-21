@@ -11,7 +11,7 @@
           <i class="iconfont">&#xe625;</i>
           <i class="iconfont">&#xe65c;</i>
         </div>
-        <div class="title">议到工治带来你式同身线三际行动京低已已团省然名给技员日半九识就物样局真经条得布素与复复观走角者团。</div>
+        <div class="title">议到工治带来你式同身线三际行动京低已已团。</div>
       </div>
       <div class="hobby">
         <span>
@@ -66,7 +66,7 @@ export default {
 /* 容器 */
 .wrap {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background: url("../assets/personal/personBg.jpg") no-repeat;
   background-size: 100% 100%;
@@ -94,7 +94,13 @@ export default {
 }
 /* right */
 .hobby {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hobby span {
+  margin: 1rem;
 }
 
 /* iconfont */

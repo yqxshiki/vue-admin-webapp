@@ -48,7 +48,6 @@ export default {
         callback(new Error("请输入密码"));
       } else {
         if (this.ruleForm.password !== "") {
-          // this.$refs.ruleForm.validateField("password");
         }
         callback();
       }
@@ -76,7 +75,7 @@ export default {
     // 页面自动获取数据,直接登录
     getform() {
       this.axios
-        .post("/api/login")
+        .post("/login")
         .then(res => {
           // console.log(res);
           this.ruleForm = res.data.data.form;
@@ -99,7 +98,7 @@ export default {
             password: this.ruleForm.password
           };
           this.axios
-            .post("/api/login", newform)
+            .post("/login", newform)
             .then(res => {
               // console.log(res.data.data.userInfo.token);
               const token = res.data.data.userInfo.token;
@@ -132,7 +131,7 @@ export default {
     this.$notify({
       title: "提示",
       message:
-        "目前有两个账号可以登录，分别收管理员和用户，用户名分别收admin,user密码都为：123456",
+        "目前有两个账号可以登录，分别收管理员和用户，用户名分别是admin,user密码都为：123456",
       type: "warning",
       duartion: 0
     }),
