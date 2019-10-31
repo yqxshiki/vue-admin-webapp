@@ -34,10 +34,8 @@ export default {
   methods: {
     getimg() {
       this.axios.get("/carousel").then(res => {
-        console.log(res);
         let list = res.data.data.swiperList;
         this.imglist = list;
-        // console.log(this.imglist);
       });
     }
   },

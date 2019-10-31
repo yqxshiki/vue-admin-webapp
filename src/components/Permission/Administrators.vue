@@ -28,11 +28,10 @@ export default {
           "/Administrators"
         )
         .then(res => {
-          // console.log(res.data.data);
           this.tag = res.data.data.administrators;
         })
         .catch(err => {
-          console.log(err);
+           ;
         });
     }
   },

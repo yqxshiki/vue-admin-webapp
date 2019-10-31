@@ -28,11 +28,10 @@ export default {
       this.axios
         .get("/export")
         .then(res => {
-          // console.log(res);
           this.excel = res.data.data.export;
         })
         .catch(err => {
-          console.log(err);
+           ;
         });
     }
   },

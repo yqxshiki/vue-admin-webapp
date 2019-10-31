@@ -27,11 +27,10 @@ export default {
           "/users"
         )
         .then(res => {
-          // console.log(res.data.data);
           this.tag = res.data.data.user;
         })
         .catch(err => {
-          console.log(err);
+           ;
         });
     }
   },

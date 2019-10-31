@@ -80,7 +80,7 @@ export default {
     onReady: function(instance, CountUp) {
       const that = this;
       instance.update(that.endVal + 100);
-    },
+    }
   }
 };
 </script>
@@ -135,16 +135,19 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
   font-size: 1.5rem;
   font-weight: bolder;
+  height: 131px;
 }
 .iCountUp .text {
   font-size: 0.8rem;
   color: #36a3f7;
   text-shadow: 0 5px 10px red;
   white-space: nowrap;
+  margin-top: 20px;
+  font-weight: 700;
 }
 .bg-purple {
   width: 50%;
-  margin-top: 20px;
+  margin-top: -30px;
 }
 .bg-purple-light {
   background: #e5e9f2;

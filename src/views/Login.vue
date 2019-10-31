@@ -38,7 +38,6 @@ export default {
         callback(new Error("请输入用户名"));
       } else {
         if (this.ruleForm.username !== "") {
-          // this.$refs.ruleForm.validateField("username");
         }
         callback();
       }
@@ -77,19 +76,16 @@ export default {
       this.axios
         .post("/login")
         .then(res => {
-          // console.log(res);
           this.ruleForm = res.data.data.form;
-          // console.log(res.data.data.form);
         })
         .catch(err => {
-          console.log(err);
+           ;
         });
     },
     // 登录发送数据
     sendform() {
       this.onSubmit();
       if (this.key == 1) {
-        // console.log(this.key);
         if (this.ruleForm.username == "" || this.ruleForm.password == "") {
           alert("请输入用户名或者密码");
         } else {
@@ -100,15 +96,13 @@ export default {
           this.axios
             .post("/login", newform)
             .then(res => {
-              // console.log(res.data.data.userInfo.token);
               const token = res.data.data.userInfo.token;
               localStorage.setItem("loginToken", token);
               this.$store.getters.change;
-              // console.log(this.$store.state.driverkey);
               this.$router.push("/display");
             })
             .catch(err => {
-              console.log(err);
+               ;
             });
         }
       }

@@ -7,11 +7,6 @@
 <script>
 export default {
   name: "app"
-  // created() {
-  //   if (localStorage.loginToken) {
-  //     this.$store.dispatch("setUser", localStorage.loginToken);
-  //   }
-  // }
 };
 </script>
 

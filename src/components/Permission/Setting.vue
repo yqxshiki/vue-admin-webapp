@@ -93,11 +93,10 @@ export default {
       this.axios
         .get("/setting")
         .then(res => {
-          // console.log(res);
           this.settingdata = res.data.data.setting;
         })
         .catch(err => {
-          console.log(err);
+           ;
         });
     },
     // 发送数据
