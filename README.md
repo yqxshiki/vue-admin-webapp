@@ -32,7 +32,7 @@ npm install
 npm run serve
 ```
 
-启动后，将自动打开游览器 **http://localhost:8080**,你就可以看到项目效果了。
+启动后，将自动打开游览器 [http://localhost:8080](http://localhost:8080),你就可以看到项目效果了。
 
 ### 项目页面结构
 
